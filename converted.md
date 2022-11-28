@@ -1,6 +1,8 @@
 ## Aluno: Marcelo Melo de Oliveira 
 Link do Repo no Github: https://github.com/marcelomeloo/Exame-GED13
-
+OBS: O seguinte arquivo foi feito em Rmarkdown no editor de texto VSCode.
+Por esse motivo, o pdf é ligeiramente diferente das versões Rmarkdown feitas
+no RStudio.
 
 # Questão 1
 ### a)
