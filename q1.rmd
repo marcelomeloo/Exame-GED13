@@ -1,0 +1,68 @@
+# Questão 1
+### a)
+### - Inicializacao
+```{r}
+  library(nortest)
+  amostra1990 <- c(281, 359, 247, 470, 432, 194, 306, 210,  
+    305, 430, 200, 223, 388, 480, 291, 190, 300, 235, 241, 380)
+  amostra2000 <- c(140, 160, 22, 20, 223, 60, 30, 95, 360,  
+    70, 218, 300, 217, 58, 235, 280, 200, 175, 85, 65)
+
+  z.amostra1990 <- scale(amostra1990)
+  z.amostra2000 <- scale(amostra2000)
+```
+### - Testes da Amostra de 1990
+```{r}
+  ks.test(z.amostra1990, "pnorm", 0, 1)
+  shapiro.test(amostra1990)
+  ad.test(amostra1990)
+  lillie.test(amostra1990)
+```
+Como em todos os testes obteve-se um valor de ```p-value``` maior do que 0.05, 
+não foi negada a hipotese nula dos testes de normalidade. Isto é, é pertinente
+considerar que a amostra dos modelos de 1990 segue uma distribuição normal.  
+```{r}
+```
+### - Testes da Amostra de 2000
+```{r}
+  ks.test(z.amostra2000, "pnorm", 0, 1)
+  shapiro.test(amostra2000)
+  ad.test(amostra2000)
+  lillie.test(amostra2000)
+```
+Como em todos os testes obteve-se um valor de ```p-value``` maior do que 0.05, 
+não foi negada a hipotese nula dos testes de normalidade. Isto é, é pertinente
+considerar que a amostra dos modelos de 2000 também segue uma distribuição normal.
+```{r}
+```
+### b)
+```{r}
+  var1 <- var(amostra1990)
+  var2 <- var(amostra2000)
+  graus <- length(amostra1990) - 1
+  var1
+  var2
+```
+Como ```var1``` menor que ```var2``` e assumindo um intervalo de confiança de 95%, temos:
+```{r}
+  alpha <- 1 - 0.95
+  estatistica.teste <- graus*var2/var1
+  qui.critico <- qchisq(alpha/2, df=graus)
+
+  if (estatistica.teste < qui.critico) {
+    print("Hipotese nula rejeitada")
+  } else {
+    print("Hipotese nula nao rejeitada")
+  }
+```
+Portanto, não rejeitamos a hipótese de que as variâncias
+são iguais.
+```{r}
+```
+### c)
+```{r}
+  var.test(amostra1990, amostra2000, alternative="two.sided")
+```
+Considerando um nível de significância de 0.05, temos que o ```p-value``` é
+maior que 0.05. Dessa forma, não rejeitamos a hipótese de que as variâncias
+são iguais.

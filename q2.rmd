@@ -1,0 +1,13 @@
+# Questão 2
+### a)
+Pelo método dos momentos temos:  
+$$ \mu_1 = \ \int_{0}^{\infty} \frac{x*x^6*e^\frac{-x}{\beta}}{\Gamma(7)\beta^7} \,dy \ = m_1 = E[X] \quad\therefore\quad  
+E[X] = 7\beta $$
+$$ \mu = E[X] = 7\beta \quad\therefore\quad \beta = \mu/7 $$
+```{r}
+```
+### b)
+Pelo método da máxima verossimilhança, temos:
+$$ L(\beta) = f(x_1)*f(x_2)\cdots*f(x_n) = x^6_1*x^6_2\cdots*x^6_n * \frac{e^\frac{-n*<X>}{\beta}}{\beta^{7n}} $$
+$$ l(\beta) = ln(L(\beta)) = ln(x^6_1)+ln(x^6_2)+\cdots+ln(x^6_n)-\frac{n*<X>}{\beta}-7nln(\beta) $$
+$$ \frac{dl(\beta)}{d\beta} = 0 \quad\therefore\quad \frac{n*<X>}{\beta} = 7n \quad\therefore\quad \beta_{MV} = \frac{\mu}{7} $$

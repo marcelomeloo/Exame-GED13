@@ -1,0 +1,54 @@
+# Questão 4
+### a)
+```{r}
+  library(nortest)
+  ipca <- c(6.41, 10.67, 6.29, 2.95, 3.75, 4.31, 4.52)
+```
+```{r}
+  shapiro.test(ipca)
+  lillie.test(ipca)
+```
+Como em todos os testes obteve-se um valor de ```p-value``` maior do que 0.05, 
+não foi negada a hipotese nula dos testes de normalidade. Isto é, é pertinente
+considerar que a amostra do IPCA segue uma distribuição normal.
+```{r}
+```
+### b)
+```{r}
+  mi <- mean(ipca)
+  s <- sqrt(var(ipca))
+  graus <- length(ipca) - 1
+  ic <- 99
+  alpha <- 1 - ic/100
+
+  z <- (-1)*qt(alpha/2, df=graus, lower.tail = TRUE)
+  limite.sup <- mi + z*s/sqrt(graus+1)
+  limite.inf <- mi - z*s/sqrt(graus+1)
+  limite.sup
+  limite.inf
+```
+Assim, obteve-se: `r limite.inf` < Média < `r limite.sup`
+```{r}
+```
+### c)
+```{r}
+  distancia <- 3
+  t <- distancia*sqrt(graus+1)/(2*s)
+  alpha <- 2*pt((-1)*t, df=graus)
+  ic <- 100*(1 - alpha)
+  ic
+```
+Portanto, o nível de confiança foi de: `r ic`
+```{r}
+```
+### d)
+```{r}
+  ic <- 0.9
+  alpha <- 1 - ic
+  qui.quadrado.inf <- qchisq(1-alpha/2, graus)
+  qui.quadrado.sup <- qchisq(alpha/2, graus)
+  limite.inf <- sqrt(graus/qui.quadrado.inf)*s
+  limite.sup <- sqrt(graus/qui.quadrado.sup)*s
+```
+Assim, obteve-se: `r limite.inf` < Desvio padrão < `r limite.sup`
+

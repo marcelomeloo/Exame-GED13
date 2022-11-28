@@ -1,0 +1,13 @@
+## Aluno: Marcelo Melo de Oliveira 
+Link do Repo no Github: https://github.com/marcelomeloo/Exame-GED13
+OBS: O seguinte arquivo foi feito em Rmarkdown no editor de texto VSCode.
+Por esse motivo, o pdf é ligeiramente diferente das versões Rmarkdown feitas
+no RStudio.
+```{R child='./q1.rmd'}
+```
+```{R child='./q2.rmd'}
+```
+```{R child='./q3.rmd'}
+```
+```{R child='./q4.rmd'}
+```
